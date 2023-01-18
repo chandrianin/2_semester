@@ -1,6 +1,6 @@
 .idea/
 venv/
 cmake-build-debug/
-practice/1_pract/cmake-build-release/
-practice/1_pract/cmake-build-debug-visual-studio/
-practice/1_pract/cmake-build-release-visual-studio/
+cmake-build-release/
+cmake-build-debug-visual-studio/
+cmake-build-release-visual-studio/
