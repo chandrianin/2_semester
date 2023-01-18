@@ -28,11 +28,11 @@ private:
 
 public:
     cipher(){
-        inputText();
+        encode();
     }
 
     // Ввод текста
-    void inputText(){
+    void encode(){
     std::cout << "Введите текст" << std::endl;
     getline(std::cin, m_text);
     m_text += ' ';
@@ -51,6 +51,10 @@ public:
 
     // Вывод слов в соответствии с ключом юзера
     void decode(){
+        if (m_words.size() > 30){
+            std::cout << "Упс...\nЧто-то пошло не так!" << std::endl;
+            system("pause");
+        }
         bool flag = true;
         std::cout << "Начните вводить ключ\nКаждое число на новой строке" << std::endl;
         int count = 0;

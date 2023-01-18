@@ -1,0 +1,3 @@
+D:/2_semester/practice/2_pract/cmake-build-debug/CMakeFiles/2_pract.dir
+D:/2_semester/practice/2_pract/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/2_semester/practice/2_pract/cmake-build-debug/CMakeFiles/rebuild_cache.dir
