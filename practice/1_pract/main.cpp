@@ -27,9 +27,6 @@ private:
     }
 
 public:
-    cipher(){
-        encode();
-    }
 
     // ¬вод текста
     void encode(){
@@ -83,7 +80,9 @@ public:
 
 int main() {
     setlocale(LC_ALL, "Rus");
+
     cipher first;
+    first.encode();
     first.decode();
     system("pause");
 }
