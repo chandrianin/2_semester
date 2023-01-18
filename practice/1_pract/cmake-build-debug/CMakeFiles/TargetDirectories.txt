@@ -1,3 +1,0 @@
-D:/2_semester/practice/1_pract/cmake-build-debug/CMakeFiles/1_pract.dir
-D:/2_semester/practice/1_pract/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/2_semester/practice/1_pract/cmake-build-debug/CMakeFiles/rebuild_cache.dir
