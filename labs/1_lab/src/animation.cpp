@@ -21,8 +21,10 @@ animatedText::animatedText(unsigned int duration, std::string text){
         std::cout << "FontUploadFail" << std::endl;
     }
 }
-void const animatedText::textOutput(){
+void animatedText::textOutput() const{
     sf::RenderWindow window(sf::VideoMode(800, 600), "Lab_1");
+    sf::Text SFMLText;
+    sf::Font mainFont;
     unsigned short index = 0;
     std::string tempText;
     while (window.isOpen())
