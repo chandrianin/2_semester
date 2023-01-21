@@ -12,5 +12,5 @@ private:
 public:
     animatedText(unsigned int duration, std::string text);
 
-    void textOutput();
+    const void textOutput();
 };

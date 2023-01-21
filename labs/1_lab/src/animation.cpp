@@ -6,7 +6,7 @@
 animatedText::animatedText(unsigned int duration, std::string text){
     m_duration = duration;
     // std::move насколько я понял, перемещает вместо копирования,
-    // что в данном случае - выгодно
+    // что в данном случае выгоднее
     m_text = std::move(text);
     m_interval = (m_text.length() * 1000000) / m_duration;
 
@@ -21,10 +21,10 @@ animatedText::animatedText(unsigned int duration, std::string text){
         std::cout << "FontUploadFail" << std::endl;
     }
 }
-void animatedText::textOutput(){
+void const animatedText::textOutput(){
     sf::RenderWindow window(sf::VideoMode(800, 600), "Lab_1");
     unsigned short index = 0;
-    std::string tempText = "";
+    std::string tempText;
     while (window.isOpen())
     {
         sf::Event event;
