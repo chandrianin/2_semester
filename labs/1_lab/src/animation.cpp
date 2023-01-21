@@ -10,6 +10,11 @@ animatedText::animatedText(unsigned int duration, std::string text){
     m_text = std::move(text);
     m_interval = (m_text.length() * 1000000) / m_duration;
 
+}
+void animatedText::textOutput() const{
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Lab_1");
+    sf::Text SFMLText;
+    sf::Font mainFont;
     if (mainFont.loadFromFile("/ext/font/GoogleSans-Regular.ttf")){
         SFMLText.setFont(mainFont);
         SFMLText.setCharacterSize(20);
@@ -20,11 +25,6 @@ animatedText::animatedText(unsigned int duration, std::string text){
     else{
         std::cout << "FontUploadFail" << std::endl;
     }
-}
-void animatedText::textOutput() const{
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Lab_1");
-    sf::Text SFMLText;
-    sf::Font mainFont;
     unsigned short index = 0;
     std::string tempText;
     while (window.isOpen())
