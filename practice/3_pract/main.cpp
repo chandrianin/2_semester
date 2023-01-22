@@ -2,6 +2,7 @@
 #include <kinematicSolver.h>
 
 int main() {
+    setlocale(LC_ALL, "rus");
     float L1, L2, x, y;
     std::cout << "Enter L1\n>>> ";
     std::cin >> L1;
