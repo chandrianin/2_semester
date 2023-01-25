@@ -14,24 +14,18 @@ link_directories("ext/SFML/lib/")
 add_executable(1_lab main.cpp inc/animation.h src/animation.cpp)
 
 target_link_libraries("1_lab"
-#        sfml-graphics-s
-#        sfml-window-s
-#        sfml-system-s
-#        sfml-audio-s
-        sfml-graphics-s-d
-        sfml-window-s-d
-        sfml-system-s-d
-        sfml-audio-s-d
-        opengl32
-        freetype
-        winmm
-        gdi32
-        openal32
-        flac
-        vorbisenc
-        vorbisfile
-        vorbis
-        ogg
-)
+        debug sfml-graphics-s-d
+        debug sfml-window-s-d
+        debug sfml-system-s-d
+        debug sfml-audio-s-d)
 
-FILE(COPY ext/font/GoogleSans-Regular.ttf DESTINATION ext/font/)
+target_link_libraries("1_lab"
+        optimized sfml-graphics-s
+        optimized sfml-window-s
+        optimized sfml-system-s
+        optimized sfml-audio-s)
+
+target_link_libraries("1_lab" opengl32 freetype winmm gdi32 openal32 flac vorbisenc vorbisfile vorbis ogg)
+
+
+FILE(COPY "ext/font/GoogleSans-Regular.ttf" DESTINATION "ext/font/")

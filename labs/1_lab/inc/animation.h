@@ -8,7 +8,7 @@ private:
     unsigned int m_interval;
     std::string m_text;
 public:
-    animatedText(unsigned int duration, std::string text);
-
-    void textOutput() const;
+    animatedText(unsigned int duration, const std::string& text);
+    [[nodiscard]] unsigned int getInterval() const;
+    [[nodiscard]] std::string getText() const;
 };
