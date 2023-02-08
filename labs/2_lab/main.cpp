@@ -165,8 +165,14 @@ std::istream& operator >> (std::istream& is, String& currentString){
 
 
 int main() {;
+
     String test = "Apple";
-//    std::cin >> test;
+    std::cout << test << std::endl;
+    test[0] = 'p';
+    std::cout << test << std::endl;
+    system("pause");
+    return 0;
+    //    std::cin >> test;
     String qwer = "qwerty";
     if (test > qwer){
         std::cout << 1 << std::endl;
@@ -181,7 +187,7 @@ int main() {;
     std::cout << test << std::endl;
     test[0] = 'w';
     test.at(100) = 'v';
-    std::cout << test + String(" Fineapple") <<std::endl;
+    std::cout << test + String('v') <<std::endl;
     std::cout << test << std::endl;
     system("pause");
     return 0;
