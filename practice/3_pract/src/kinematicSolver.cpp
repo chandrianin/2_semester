@@ -33,26 +33,12 @@ void kinematicSolver::solve() {
             m_Py = y2;
         }
 
-//        if (sqrt((m_Mx - x1) * (m_Mx - x1) + (m_My - y1) * (m_My - y1)) < sqrt((m_Mx - x2) * (m_Mx - x2) + (m_My - y2) * (m_My - y2))){
-//            m_Px = x1;
-//            m_Py = y1;
-//        }
-//        else{
-//            m_Px = x2;
-//            m_Py = y2;
-//        }
-//        auto newAlpha = static_cast<float>(fmod(abs(static_cast<float>(acos(m_Px / m_L1) * (180 / acos(-1)))), 90));
-//        auto newBeta = static_cast<float>(fmod(abs(static_cast<float>(acos((m_Mx - m_Px) / m_L2) * (180 / acos(-1)))), 90));
-//        newAlpha = m_Px * m_Py > 0 ? newAlpha : -newAlpha;
-//        newBeta = m_Mx < m_Px && m_My > m_Py || m_Mx > m_Px && m_My < m_Py ? -newBeta : newBeta;
         auto newAlpha = static_cast<float>(acos(m_Px / m_L1) * (180 / acos(-1)));
         if (m_Px < 0 && m_Py < 0 || m_Px > 0 && m_Py < 0){
             newAlpha = -newAlpha;
         }
         auto newBeta = static_cast<float>(acos((m_Mx - m_Px) / m_L2) * (180 / acos(-1)));
-//        if (m_Px < 0 && m_Py > 0 || m_Px > 0 && m_Py < 0){
-//            newBeta = - newBeta;
-//        }
+
         visualization(newAlpha, newBeta);
 
     }

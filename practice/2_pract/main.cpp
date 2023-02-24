@@ -7,7 +7,7 @@ int main() {
 
     const int n = 10;
     //int p = n;
-    auto* newFirstMas = reinterpret_cast<int*>(&n);
+    auto* newFirstMas = reinterpret_cast<int*>(firstMas);
     auto* newSecondMas = (size_t*)secondMas;
 
     for (int i = 0; i < (int)(N / sizeof(size_t)); i++){
