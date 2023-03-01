@@ -1,9 +1,12 @@
 #include <iostream>
 #include <matrix.h>
-#include <vector>
 
 int main() {
-    std::vector<std::vector<int>> testMas = {{1, 2}, {1, 2}};
-    matrix<int, 2, 2> firstMatrix(testMas);
+    matrix<int, 2, 2> firstMatrix;
+    std::cin >> firstMatrix;
+    std::cout << firstMatrix.determinant() << std::endl;
+    std::cout << firstMatrix;
 
+    matrix<int, 2, 2> secondMatrix = firstMatrix;
+    std::cout << secondMatrix;
 }
