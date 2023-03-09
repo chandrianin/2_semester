@@ -16,6 +16,22 @@ namespace vb {
         char* boolMas = new char[0];
     public:
         vector<bool>() = default;
+        ~vector() {delete[] boolMas;}
+        vector(const vector<bool>& copy){
+            if (this != &copy){
+                vector<bool> temp;
+                std::swap(temp.boolMas, boolMas);
+                length = temp.length;
+            }
+        }
+        vector<bool>& operator= (const vector<bool>& copy){
+            if (this != &copy){
+                vector<bool> temp;
+                std::swap(temp.boolMas, boolMas);
+                length = temp.length;
+            }
+            return *this;
+        }
         bool operator[](unsigned int index) const{
             return static_cast<bool>(((boolMas[index / 8]) >> index) & 0b00000001);
         }
