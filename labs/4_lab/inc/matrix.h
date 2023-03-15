@@ -67,23 +67,12 @@ public:
         return tempMatrix;
     }
 
-    template<unsigned short U, unsigned short V>
-    matrix<type, N, V>& operator*= (const matrix<type, U, V>& rightMatrix){
-        if (M == U){
-            matrix<type, N, M> tempMatrix = *this;
-            row = N; column = V;
-            m_matrix[row][column];
+    type get(unsigned short i, unsigned short j) const {
+        return m_matrix[i][j];
+    }
 
-            for (int i = 0; i < N; i++){
-                for (int j = 0; j < V; j++){
-                    m_matrix[i][j] = 0;
-                    for (int u = 0; u < M; u++){
-                        m_matrix[i][j] += tempMatrix.m_matrix[i][u] * rightMatrix.m_matrix[u][j];
-                    }
-                }
-            }
-        }
-        return *this;
+    type& set(unsigned short i, unsigned short j) {
+        return m_matrix[i][j];
     }
 
     template<unsigned short U, unsigned short V>
@@ -95,9 +84,9 @@ public:
 
             for (int i = 0; i < N; i++){
                 for (int j = 0; j < V; j++){
-                    tempMatrix.m_matrix[i][j] = 0;
+                    tempMatrix.set(i, j) = 0;
                     for (int u = 0; u < M; u++){
-                        tempMatrix.m_matrix[i][j] += m_matrix[i][u] * rightMatrix.m_matrix[u][j];
+                        tempMatrix.set(i, j) += m_matrix[i][u] * rightMatrix.get(u, j);
                     }
                 }
             }
