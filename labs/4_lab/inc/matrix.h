@@ -8,6 +8,8 @@ template<typename type, unsigned short N, unsigned short M>
 class matrix {
 private:
     type m_matrix[N][M];
+    unsigned short row = N;
+    unsigned short column = M;
 
     template<typename type, unsigned short N, unsigned short M>
     friend std::ostream& operator<<(std::ostream& out, const matrix<type, N, M> &current);
@@ -15,10 +17,10 @@ private:
     template<typename type, unsigned short N, unsigned short M>
     friend std::istream& operator>> (std::istream& in, matrix<type, N, M>& current);
 public:
-    matrix() { std::cout << "constructor" << std::endl; };
+    matrix() = default;
 
     matrix(const matrix &current) {
-        std::cout << "--- copy constructor" << std::endl;
+//        std::cout << "--- copy constructor" << std::endl;
         for (int i = 0; i < N; i++){
             for (int j = 0; j < M; j++){
                 m_matrix[i][j] = current.m_matrix[i][j];
@@ -27,7 +29,7 @@ public:
     }
 
     matrix& operator= (const matrix<type, N, M>& current){
-        std::cout << "=== assignment constructor" << std::endl;
+//        std::cout << "=== assignment constructor" << std::endl;
         if (this != &current){
             for (int i = 0; i < N; i++){
                 for (int j = 0; j < M; j++){
@@ -65,21 +67,41 @@ public:
         return tempMatrix;
     }
 
-    matrix& operator*= (const matrix<type, M, N>& rightMatrix){
-        matrix<type, N, M> tempMatrix = *this;
-        for (int i = 0; i < N; i++){
-            for (int j = 0; j < M; j++){
-                m_matrix[i][j] = 0;
-                for (int u = 0; u < M; u++){
-                    m_matrix[i][j] += tempMatrix[i][u] * rightMatrix[u][j];
+    template<unsigned short U, unsigned short V>
+    matrix<type, N, V>& operator*= (const matrix<type, U, V>& rightMatrix){
+        if (M == U){
+            matrix<type, N, M> tempMatrix = *this;
+            row = N; column = V;
+            m_matrix[row][column];
+
+            for (int i = 0; i < N; i++){
+                for (int j = 0; j < V; j++){
+                    m_matrix[i][j] = 0;
+                    for (int u = 0; u < M; u++){
+                        m_matrix[i][j] += tempMatrix.m_matrix[i][u] * rightMatrix.m_matrix[u][j];
+                    }
                 }
             }
         }
         return *this;
     }
-    matrix operator* (const matrix<type, M, N>& rightMatrix){
-        matrix<type, N, M> tempMatrix = *this;
-        tempMatrix *= rightMatrix;
+
+    template<unsigned short U, unsigned short V>
+    matrix<type, N, V> operator* (const matrix<type, U, V>& rightMatrix){
+        matrix<type, N, V> tempMatrix{};
+        if (M == U){
+//            tempMatrix.row = N; tempMatrix.column = V;
+//            tempMatrix.m_matrix[N][V];
+
+            for (int i = 0; i < N; i++){
+                for (int j = 0; j < V; j++){
+                    tempMatrix.m_matrix[i][j] = 0;
+                    for (int u = 0; u < M; u++){
+                        tempMatrix.m_matrix[i][j] += m_matrix[i][u] * rightMatrix.m_matrix[u][j];
+                    }
+                }
+            }
+        }
         return tempMatrix;
     }
 
@@ -98,7 +120,7 @@ public:
         std::abort();
 
     }
-    ~matrix() {std::cout << "destructor" << std::endl;};
+//    ~matrix() {std::cout << "destructor" << std::endl;};
 };
 
 template<typename type, unsigned short N, unsigned short M>
