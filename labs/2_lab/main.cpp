@@ -165,7 +165,7 @@ std::istream& operator >> (std::istream& is, String& currentString){
 
 
 int main() {;
-
+    String temp("tre");
     String test = "Apple";
     std::cout << test << std::endl;
     test[0] = 'p';
