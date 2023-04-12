@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <math.h>
 
 class complex {
 private:
@@ -49,6 +50,7 @@ public:
 
     complex& operator += (const complex& copy);
     complex& operator *= (const complex& other);
+
     complex& operator++ (){
         ++m_a;
         return *this;

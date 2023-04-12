@@ -1,5 +1,7 @@
 #include <complex.h>
 #include <iostream>
+#include <math.h>
+
 complex& complex::operator = (const complex& copy){
     if (this != &copy){
         m_a = copy.m_a;
