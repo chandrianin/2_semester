@@ -9,7 +9,19 @@ private:
     unsigned int ElementsCount;
 public:
     explicit Stack(unsigned int size) : ElementsCount(size), Data(new char[ElementsCount * sizeof(type)]){}
-    //TODO конструктор копирования и оператора присваивания
+
+    Stack(const Stack<type>& copy) {
+        Data = new char[copy.ElementsCount * sizeof(type)];
+        CurrentCount = copy.CurrentCount;
+        ElementsCount = copy.ElementsCount;
+    }
+    Stack operator=(const Stack& copy) {
+        delete[] Data;
+        Data = new char[copy.ElementsCount * sizeof(type)];
+        CurrentCount = copy.CurrentCount;
+        ElementsCount = copy.ElementsCount;
+    }
+
     [[nodiscard]] unsigned int size() const {
         return CurrentCount;
     }
